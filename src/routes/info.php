@@ -29,15 +29,7 @@ $app->get('/api/provas/{ano}', function(Request $request, Response $response){
           }
 
           $json_str = '{"messages": [{ "attachment": {"type": "file", "payload": { "url": ".$url" } } } ] }';
-
-
-
-          } catch (PDOException $e) {
-              echo '{"eror":
-                        {"text": '.$e->getMessage().'};
-
-                    }';
-          }
+          
 
 });
 
