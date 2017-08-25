@@ -28,11 +28,17 @@ $app->get('/api/provas/{ano}', function(Request $request, Response $response){
               break;
           }
 
-          $json_str = '{"messages": [{ "attachment": {"type": "file", "payload": { "url": ".$url" } } } ] }';
-          
+          $json_str = '{
+                        "messages": [
+                          {"text": "Welcome to our store!"},
+                          {"text": "How can I help you?"}
+                        ]
+                      }';                     
+
 
 });
 
+/*
 //Get Single acao
 $app->get('/api/acao/{id}', function(Request $request, Response $response){
 
