@@ -28,7 +28,7 @@ $app->get('/api/provas/{ano}', function(Request $request, Response $response){
               break;
           }
 
-          $json_str = {
+          $json_str = '{
                         "messages": [
                           {
                             "attachment": {
@@ -39,7 +39,7 @@ $app->get('/api/provas/{ano}', function(Request $request, Response $response){
                             }
                           }
                         ]
-                      }
+                      }'
           echo $json_str;
 
 
