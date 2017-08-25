@@ -28,19 +28,7 @@ $app->get('/api/provas/{ano}', function(Request $request, Response $response){
               break;
           }
 
-          $json_str = '{
-                        "messages": [
-                          {
-                            "attachment": {
-                              "type": "file",
-                              "payload": {
-                                "url": ".$url"
-                              }
-                            }
-                          }
-                        ]
-                      }'
-          echo $json_str;
+          $json_str = '{"messages": [{ "attachment": {"type": "file", "payload": { "url": ".$url" } } } ] }';
 
 
 
