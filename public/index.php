@@ -15,7 +15,7 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 
 //Customer resourcebundle_get_error_message
 
-require '../src/routes/acoes.php';
+require '../src/routes/info.php';
 
 
 $app->run();
