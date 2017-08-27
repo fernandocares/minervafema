@@ -8,32 +8,50 @@ $app = new \Slim\App;
 
 $app->get('/api/provas/{ano}', function(Request $request, Response $response){
 
-          $ano = $request->getAttribute('ano');
+            $ano = $request->getAttribute('ano');
 
-          switch ($ano) {
-            case '2016':
-              $url = 'https://www.fema.edu.br/images/pdfs/Vestibular/prova_2016.pdf';
-              break;
+            switch ($ano) {
+                case '2016':
+                  $url = 'https://www.fema.edu.br/images/pdfs/Vestibular/prova_2016.pdf';
+                break;
 
-            case '2015':
-                $url = 'https://www.fema.edu.br/images/pdfs/Vestibular/prova_2015.pdf';
-              break;
+                case '2015':
+                  $url = 'https://www.fema.edu.br/images/pdfs/Vestibular/prova_2015.pdf';
+                break;
 
-            case '2014':
-                $url = 'https://www.fema.edu.br/images/pdfs/Vestibular/prova_2014.pdf';
-              break;
+                case '2014':
+                  $url = 'https://www.fema.edu.br/images/pdfs/Vestibular/prova_2014.pdf';
+                break;
 
-            default:
+                default:
+                  $not_found = true;
+                break;
+                }
 
-              break;
-          }
 
-          $json_str = '{
-                        "messages": [
-                          {"text": "Welcome to our store!"},
-                          {"text": "How can I help you?"}
-                        ]
-                      }';                     
+            if($not_found){
+              $json_str = '{
+                   "messages": [
+                       {"text": "Ops! Esta prova não está disponível :("}
+                    ]
+                  }';
+            echo $json_str;
+            }
+            else{
+              $json_str = '{
+                "messages": [
+                  {
+                    "attachment": {
+                      "type": "file",
+                      "payload": {
+                        "url": "'.$url.'"
+                      }
+                    }
+                  }
+                ]
+              }';
+            echo $json_str;
+            }
 
 
 });
